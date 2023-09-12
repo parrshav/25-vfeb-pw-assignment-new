@@ -1,0 +1,166 @@
+Consider following code to answer further questions:
+import pandas as pd
+course_name = [‘Data Science’, ‘Machine Learning’, ‘Big Data’, ‘Data Engineer’]
+duration = [2,3,6,4]
+df = pd.DataFrame(data = {‘course_name’ : course_name, ‘duration’ : duration})
+Q1. Write a code to print the data present in the second row of the dataframe, df.
+
+second_row=df.iloc[1]
+print(second_row)
+Q2. What is the difference between the functions loc and iloc in pandas.DataFrame?
+loc (label-based indexing):
+
+loc is primarily used for label-based indexing, which means you access data by specifying row and column labels.
+iloc (integer-based indexing):
+
+iloc is primarily used for integer-based indexing, where you access data by specifying row and column positions (integer indices).
+Q3. Reindex the given dataframe using a variable, reindex = [3,0,1,2] and store it in the variable, new_df
+then find the output for both new_df.loc[2] and new_df.iloc[2].
+reindex=[3,0,1,2]
+new_df=df.reindex(reindex)
+new_df
+course_name    Big Data
+duration              6
+Name: 2, dtype: object
+course_name    Machine Learning
+duration                      3
+Name: 1, dtype: object
+
+
+Consider the below code to answer further questions:
+import pandas as pd
+import numpy as np
+columns = ['column_1', 'column_2', 'column_3', 'column_4', 'column_5', 'column_6']
+indices = [1,2,3,4,5,6]
+#Creating a dataframe:
+df1 = pd.DataFrame(np.random.rand(6,6), columns = columns, index = indices)
+
+Q4. Write a code to find the following statistical measurements for the above dataframe df1:
+(i) mean of each and every column present in the dataframe.
+(ii) standard deviation of column, ‘column_2’
+
+df1.mean()
+(ii) standard deviation of column, ‘column_2’
+Q5. Replace the data present in the second row of column, ‘column_2’ by a string variable then find the
+mean of column, column_2.
+If you are getting errors in executing it then explain why.
+[Hint: To replace the data use df1.loc[] and equate this to string data of your choice.]
+df1.loc[1, 'column_2'] = 'Hello'
+mean_column_2 = df1['column_2'].mean()
+print("Mean of 'column_2':", mean_column_2)
+Q6. What do you understand about the windows function in pandas and list the types of windows
+functions?
+Q7. Write a code to print only the current month and year at the time of answering this question.
+[Hint: Use pandas.datetime function]
+import pandas as pd
+
+
+current_datetime = pd.to_datetime('now')
+
+
+current_month = current_datetime.month
+current_year = current_datetime.year
+
+
+print(f"Current Month: {current_month}")
+print(f"Current Year: {current_year}")
+
+Q8. Write a Python program that takes in two dates as input (in the format YYYY-MM-DD) and
+calculates the difference between them in days, hours, and minutes using Pandas time delta. The
+program should prompt the user to enter the dates and display the result.
+
+date1=input('Enter your date in yyyy-mm-dd format')
+date2=input('Enter your 2nd date in yyyy-mm-dd format')
+date_one=pd.to_datetime(date1)
+date_two=pd.to_datetime(date2)
+difference=date_two-date_one
+
+print(difference)
+
+Enter your date in yyyy-mm-dd format 2002-01-07
+Enter your 2nd date in yyyy-mm-dd format 2023-01-07
+7670 days 00:00:00
+Did you observe any difference in both the outputs? If so then explain it.
+Consider the below code to answer further questions:
+import pandas as pd
+import numpy as np
+columns = ['column_1', 'column_2', 'column_3', 'column_4', 'column_5', 'column_6']
+indices = [1,2,3,4,5,6]
+#Creating a dataframe:
+df1 = pd.DataFrame(np.random.rand(6,6), columns = columns, index = indices)
+
+Assignment
+
+Data Science Masters
+
+Q9. Write a Python program that reads a CSV file containing categorical data and converts a specified
+column to a categorical data type. The program should prompt the user to enter the file path, column
+name, and category order, and then display the sorted data.
+Q10. Write a Python program that reads a CSV file containing sales data for different products and
+visualizes the data using a stacked bar chart to show the sales of each product category over time. The
+program should prompt the user to enter the file path and display the chart.
+Q11. You are given a CSV file containing student data that includes the student ID and their test score. Write
+a Python program that reads the CSV file, calculates the mean, median, and mode of the test scores, and
+displays the results in a table.
+
+import pandas as pd
+
+# Create the DataFrame
+data = {
+    'Student ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Test Score': [85, 90, 80, 75, 85, 82, 78, 85, 90, 85]
+}
+
+df = pd.DataFrame(data)
+
+# Save the DataFrame as a CSV file
+csv_file_path = "student_data.csv"  # Change the file path as needed
+
+df.to_csv(csv_file_path, index=False)
+
+print("DataFrame saved as CSV file:", csv_file_path)
+
+df=pd.read_csv("student_data.csv")
+
+df.describe()
+
+
+	Student ID	Test Score
+count	10.00000	10.000000
+mean	5.50000	83.500000
+std	3.02765	4.836206
+min	1.00000	75.000000
+25%	3.25000	80.500000
+50%	5.50000	85.000000
+75%	7.75000	85.000000
+max	10.00000	90.000000                The program should do the followingM
+I Prompt the user to enter the file path of the CSV file containing the student dataR
+I Read the CSV file into a Pandas DataFrameR
+I Calculate the mean, median, and mode of the test scores using Pandas toolsR
+I Display the mean, median, and mode in a table.
+Assume the CSV file contains the following columnsM
+I Student ID: The ID of the studentR
+I Test Score: The score of the student's test.
+Example usage of the program:
+Enter the file path of the CSV file containing the student data: student_data.csv
++-----------+--------+
+| Statistic | Value |
++-----------+--------+
+| Mean | 79.6 |
+| Median | 82 |
+| Mode | 85, 90 |
++-----------+--------+
+Assume that the CSV file student_data.csv contains the following data:
+Student ID,Test Score
+1,85
+2,90
+3,80
+4,75
+5,85
+6,82
+7,78
+8,85
+9,90
+10,85
+The program should calculate the mean, median, and mode of the test scores and display the results
+in a table.
